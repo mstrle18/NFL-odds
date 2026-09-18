@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gridiron Edge - AI Deployment Portal</title>
+    <title>Gridiron Edge // AI Model Transfer</title>
     <style>
         :root {
-            --bg-dark: #070a13;
-            --panel-bg: #111625;
-            --accent-green: #00ff88;
-            --accent-blue: #00d2ff;
-            --text-main: #f1f5f9;
-            --text-muted: #64748b;
-            --border-color: #1e293b;
+            --bg-dark: #0a0d14;
+            --card-bg: #111622;
+            --input-bg: #07090e;
+            --accent-green: #00ff73;
+            --border-color: #1c2436;
+            --text-main: #ffffff;
+            --text-muted: #5e6d8a;
         }
 
         * {
@@ -22,276 +22,236 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: var(--bg-dark);
             color: var(--text-main);
-            padding: 2rem;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
+            padding: 20px;
         }
 
-        .portal-wrapper {
-            width: 100%;
-            max-width: 1000px;
-            background: var(--panel-bg);
+        .panel {
+            background-color: var(--card-bg);
             border: 1px solid var(--border-color);
-            border-radius: 12px;
-            padding: 2.5rem;
+            border-radius: 8px;
+            width: 100%;
+            max-width: 900px;
+            padding: 40px;
             box-shadow: 0 20px 40px rgba(0,0,0,0.5);
         }
 
-        header {
-            border-bottom: 2px solid var(--border-color);
-            padding-bottom: 1.5rem;
-            margin-bottom: 2rem;
+        .header {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            margin-bottom: 40px;
         }
 
-        h1 {
-            font-size: 1.6rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+        .title {
+            font-size: 1.5rem;
             font-weight: 800;
+            letter-spacing: 1px;
         }
 
-        h1 span {
+        .title span {
             color: var(--accent-green);
         }
 
-        .status-badge {
-            background: rgba(0, 255, 136, 0.1);
+        .badge {
+            background-color: rgba(0, 255, 115, 0.1);
             color: var(--accent-green);
-            padding: 0.4rem 1rem;
+            border: 1px solid var(--accent-green);
+            padding: 4px 12px;
             border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            border: 1px solid rgba(0, 255, 136, 0.2);
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
         }
 
-        .main-layout {
+        .content-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 2rem;
+            gap: 30px;
         }
 
         @media (max-width: 768px) {
-            .main-layout {
+            .content-grid {
                 grid-template-columns: 1fr;
             }
         }
 
-        .control-panel, .output-panel {
-            display: flex;
-            flex-direction: column;
-            gap: 1.25rem;
-        }
-
-        .input-group {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
+        .form-group {
+            margin-bottom: 24px;
         }
 
         label {
+            display: block;
+            color: var(--text-muted);
             font-size: 0.75rem;
+            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
-            color: var(--text-muted);
-            font-weight: 700;
+            margin-bottom: 8px;
         }
 
         select, input {
-            background: #090d16;
+            width: 100%;
+            background-color: var(--input-bg);
             border: 1px solid var(--border-color);
-            padding: 0.85rem;
-            border-radius: 6px;
-            color: #fff;
-            font-size: 0.95rem;
+            color: var(--text-main);
+            padding: 12px;
+            border-radius: 4px;
+            font-size: 0.9rem;
             outline: none;
-            transition: all 0.2s ease;
         }
 
         select:focus, input:focus {
-            border-color: var(--accent-blue);
-            box-shadow: 0 0 10px rgba(0, 210, 255, 0.2);
+            border-color: var(--accent-green);
         }
 
-        .action-btn {
-            background: var(--accent-green);
-            color: #070a13;
+        .btn {
+            background-color: var(--accent-green);
+            color: #000;
+            width: 100%;
             border: none;
-            padding: 1rem;
+            padding: 16px;
+            border-radius: 4px;
             font-weight: 700;
-            text-transform: uppercase;
+            font-size: 0.9rem;
             letter-spacing: 1px;
-            border-radius: 6px;
             cursor: pointer;
-            transition: transform 0.1s, opacity 0.2s;
-            margin-top: 1rem;
+            text-transform: uppercase;
+            margin-top: 10px;
+            transition: opacity 0.2s;
         }
 
-        .action-btn:hover {
+        .btn:hover {
             opacity: 0.9;
         }
 
-        .action-btn:active {
-            transform: scale(0.98);
-        }
-
-        .action-btn:disabled {
-            background: var(--border-color);
-            color: var(--text-muted);
-            cursor: not-allowed;
-            transform: none;
-        }
-
-        .terminal-box {
-            background: #05070c;
+        .terminal {
+            background-color: #05070a;
             border: 1px solid var(--border-color);
-            border-radius: 6px;
-            padding: 1rem;
-            height: 220px;
-            overflow-y: auto;
+            border-radius: 4px;
+            padding: 20px;
             font-family: 'Courier New', Courier, monospace;
             font-size: 0.85rem;
-            color: #a6adbb;
-            display: flex;
-            flex-direction: column;
-            gap: 0.4rem;
+            height: 280px;
+            overflow-y: auto;
+            color: #8da2c4;
         }
 
-        .terminal-line.success { color: var(--accent-green); }
-        .terminal-line.info { color: var(--accent-blue); }
-        .terminal-line.warning { color: #fbbf24; }
-
-        .progress-section {
-            background: #090d16;
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            padding: 1rem;
-            display: none;
+        .log-line {
+            margin-bottom: 8px;
+            line-height: 1.4;
         }
 
-        .progress-meta {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.85rem;
-            margin-bottom: 0.5rem;
+        .log-system {
+            color: #5e6d8a;
         }
 
-        .progress-track {
-            background: #1e293b;
-            height: 6px;
-            border-radius: 3px;
-            overflow: hidden;
-        }
-
-        .progress-fill {
-            background: linear-gradient(90deg, var(--accent-blue), var(--accent-green));
-            width: 0%;
-            height: 100%;
-            transition: width 0.2s ease;
+        .log-success {
+            color: var(--accent-green);
         }
     </style>
 </head>
 <body>
 
-<div class="portal-wrapper">
-    <header>
-        <h1>Gridiron Edge <span>// AI Model Transfer</span></h1>
-        <div class="status-badge" id="system-status">System Ready</div>
-    </header>
+<div class="panel">
+    <div class="header">
+        <div class="title">GRIDIRON EDGE <span>// AI MODEL TRANSFER</span></div>
+        <div class="badge" id="status-badge">SYSTEM READY</div>
+    </div>
 
-    <div class="main-layout">
-        <!-- Configuration Side -->
-        <div class="control-panel">
-            <div class="input-group">
-                <label for="model-source">Select Target AI Model</label>
-                <select id="model-source">
-                    <option value="live-simulation-v4">Live Game Simulation Engine (v4.2-Beta)</option>
-                    <option value="prop-predict-v2">Player Prop Analytics Matrix (v2.0)</option>
-                    <option value="line-movement-v1">Real-time Line & Spread Optimization Core</option>
+    <div class="content-grid">
+        <div class="left-panel">
+            <div class="form-group">
+                <label>Select Target AI Model</label>
+                <select id="model-select">
+                    <option>Live Game Simulation Engine (v4.2-Beta)</option>
+                    <option>Player Prop Deep Predictor (v1.0)</option>
+                    <option>Vegas Line Discrepancy Finder (v2.1)</option>
                 </select>
             </div>
 
-            <div class="input-group">
-                <label for="destination-target">Destination Environment</label>
-                <input type="text" id="destination-target" value="https://cluster.internal">
+            <div class="form-group">
+                <label>Destination Environment</label>
+                <input type="text" value="https://cluster.internal">
             </div>
 
-            <div class="input-group">
-                <label for="secure-key">Secure Access Key / Hash</label>
-                <input type="password" id="secure-key" value="••••••••••••••••••••••••••••">
+            <div class="form-group">
+                <label>Secure Access Key / Hash</label>
+                <input type="password" value="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx">
             </div>
 
-            <button class="action-btn" id="initiate-btn">Deploy & Transfer Core</button>
+            <button class="btn" id="deploy-btn">Deploy & Transfer Core</button>
         </div>
 
-        <!-- Terminal & Status Updates Side -->
-        <div class="output-panel">
-            <div class="terminal-box" id="terminal-output">
-                <div class="terminal-line">[SYSTEM] Matrix interface compiled successfully.</div>
-                <div class="terminal-line">[SYSTEM] Verification keys set. Awaiting manual activation flag...</div>
-            </div>
-
-            <div class="progress-section" id="progress-wrapper">
-                <div class="progress-meta">
-                    <span id="progress-text">Executing handshake protocol...</span>
-                    <span id="progress-pct">0%</span>
-                </div>
-                <div class="progress-track">
-                    <div class="progress-fill" id="progress-bar"></div>
-                </div>
+        <div class="right-panel">
+            <div class="terminal" id="terminal-output">
+                <div class="log-line"><span class="log-system">[SYSTEM]</span> Matrix interface compiled successfully.</div>
+                <div class="log-line"><span class="log-system">[SYSTEM]</span> Verification keys set. Awaiting manual activation flag...</div>
             </div>
         </div>
     </div>
 </div>
 
 <script>
-    const initiateBtn = document.getElementById('initiate-btn');
+    const btn = document.getElementById('deploy-btn');
     const terminal = document.getElementById('terminal-output');
-    const progressWrapper = document.getElementById('progress-wrapper');
-    const progressBar = document.getElementById('progress-bar');
-    const progressText = document.getElementById('progress-text');
-    const progressPct = document.getElementById('progress-pct');
-    const systemStatus = document.getElementById('system-status');
+    const badge = document.getElementById('status-badge');
 
-    function appendLog(message, styleClass = '') {
-        const line = document.createElement('div');
-        line.className = `terminal-line ${styleClass}`;
-        const time = new Date().toLocaleTimeString();
-        line.textContent = `[${time}] ${message}`;
-        terminal.appendChild(line);
-        terminal.scrollTop = terminal.scrollHeight;
-    }
+    btn.addEventListener('click', () => {
+        // Prevent double clicking
+        btn.disabled = true;
+        btn.innerText = "Transferring...";
+        badge.innerText = "TRANSFER ACTIVE";
+        badge.style.borderColor = "#ffaa00";
+        badge.style.color = "#ffaa00";
+        badge.style.backgroundColor = "rgba(255, 170, 0, 0.1)";
 
-    initiateBtn.addEventListener('click', () => {
-        const selectedModel = document.getElementById('model-source').value;
-        
-        // Reset UI State
-        initiateBtn.disabled = true;
-        progressWrapper.style.display = 'block';
-        systemStatus.textContent = 'Transferring...';
-        systemStatus.style.borderColor = 'var(--accent-blue)';
-        systemStatus.style.color = 'var(--accent-blue)';
-        systemStatus.style.background = 'rgba(0, 210, 255, 0.1)';
-
-        appendLog(`Starting automated pipeline deployment for: ${selectedModel}`, 'info');
-
-        const pipelineSteps = [
-            { pct: 20, text: 'Encrypting weights and matrix assets...', log: 'Neural weights packetized into secure blobs.', style: 'info' },
-            { pct: 45, text: 'Opening secure remote runtime stream...', log: 'Destination socket validated. Routing handshake...', style: 'info' },
-            { pct: 70, text: 'Streaming live telemetry coefficients...', log: 'Data block streaming synchronized over layer-7 array.', style: 'info' },
-            { pct: 90, text: 'Executing validation validation pass...', log: 'Parsing remote node checksum calculations...', style: 'warning' },
-            { pct: 100, text: 'Deployment Sync Complete.', log: 'Core hot-swap success. Dynamic model update live!', style: 'success' }
+        const logs = [
+            "Handshake initiated with https://cluster.internal...",
+            "Validating Secure Access Key...",
+            "Authorization GRANTED.",
+            "Freezing live neural weights layer...",
+            "Streaming 4.2-Beta core tensors (14.2 GB)...",
+            "Data pipeline running at 850 MB/s...",
+            "Validating SHA-256 validation signatures...",
+            "SUCCESS: Core transferred to target environment successfully."
         ];
 
         let index = 0;
-        function processPipeline() {
-            if (index < pipelineSteps.length) {
-                const step = pipelineSteps[index];
+        function printLog() {
+            if (index < logs.length) {
+                const line = document.createElement('div');
+                line.className = 'log-line';
+                
+                if (index === 2 || index === 7) {
+                    line.innerHTML = `<span class="log-success">[SUCCESS]</span> ${logs[index]}`;
+                } else {
+                    line.innerHTML = `<span class="log-system">[PROCESS]</span> ${logs[index]}`;
+                }
+                
+                terminal.appendChild(line);
+                terminal.scrollTop = terminal.scrollHeight;
+                index++;
+                setTimeout(printLog, 1000);
+            } else {
+                btn.disabled = false;
+                btn.innerText = "Deploy & Transfer Core";
+                badge.innerText = "ONLINE / DEPLOYED";
+                badge.style.borderColor = "#00ff73";
+                badge.style.color = "#00ff73";
+                badge.style.backgroundColor = "rgba(0, 255, 115, 0.1)";
+            }
+        }
+
+        setTimeout(printLog, 500);
+    });
+</script>
+
+</body>
+</html>
