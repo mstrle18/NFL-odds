@@ -1,11 +1,9 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>NFL Odds Hub</title>
+<title>NFL Odds</title>
 
 <style>
 * {
@@ -16,343 +14,119 @@ body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
     background: #0b0f14;
-    color: #f5f7fa;
+    color: white;
 }
 
 header {
     background: #111820;
+    padding: 20px;
     border-bottom: 1px solid #26313d;
-    position: sticky;
-    top: 0;
-    z-index: 100;
 }
 
-.nav {
-    max-width: 1450px;
+.header-inner {
+    max-width: 1200px;
     margin: auto;
-    padding: 18px 25px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 }
 
-.logo {
-    font-size: 25px;
-    font-weight: 800;
-    letter-spacing: .5px;
-}
-
-.logo span {
-    color: #21d07a;
-}
-
-nav a {
-    color: #aeb8c4;
-    text-decoration: none;
-    margin-left: 25px;
-    font-size: 14px;
-    font-weight: 700;
-}
-
-nav a:hover {
-    color: white;
-}
-
-.hero {
-    background: linear-gradient(135deg,#111a24,#0b0f14);
-    border-bottom: 1px solid #202b36;
-}
-
-.hero-inner {
-    max-width: 1450px;
-    margin: auto;
-    padding: 45px 25px 35px;
-}
-
-.hero h1 {
-    margin: 0 0 8px;
-    font-size: 38px;
-}
-
-.hero p {
+h1 {
     margin: 0;
-    color: #8f9baa;
+    font-size: 30px;
+}
+
+.subtitle {
+    color: #8d9aaa;
+    margin-top: 6px;
 }
 
 .container {
-    max-width: 1450px;
+    max-width: 1200px;
     margin: auto;
-    padding: 25px;
+    padding: 25px 15px;
 }
 
-.controls {
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-    margin-bottom: 25px;
+.status {
+    background: #111820;
+    border: 1px solid #26313d;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 20px;
 }
 
-button,
-select,
-input {
-    background: #151d26;
-    color: white;
-    border: 1px solid #303c49;
-    border-radius: 7px;
-    padding: 11px 15px;
-    font-size: 14px;
+.status span {
+    color: #45d483;
+    font-weight: bold;
 }
 
-button {
-    cursor: pointer;
-    font-weight: 700;
-}
-
-button:hover {
-    background: #202b36;
-}
-
-button.active {
-    background: #21d07a;
-    color: #07130c;
-    border-color: #21d07a;
-}
-
-.section-title {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 35px 0 15px;
-}
-
-.section-title h2 {
-    margin: 0;
-    font-size: 22px;
-}
-
-.section-title span {
-    color: #718091;
-    font-size: 13px;
-}
-
-.games {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 18px;
-}
-
-.game-card {
-    background: #121922;
-    border: 1px solid #293542;
+.game {
+    background: #111820;
+    border: 1px solid #26313d;
     border-radius: 12px;
+    margin-bottom: 18px;
     overflow: hidden;
 }
 
 .game-header {
-    padding: 13px 17px;
-    background: #171f29;
+    padding: 15px 18px;
+    background: #161e27;
     display: flex;
     justify-content: space-between;
-    color: #8995a3;
-    font-size: 12px;
+    align-items: center;
 }
 
-.game-body {
+.game-title {
+    font-size: 19px;
+    font-weight: bold;
+}
+
+.book {
     padding: 18px;
+    border-top: 1px solid #26313d;
 }
 
-.teams {
+.book-name {
+    font-weight: bold;
+    margin-bottom: 12px;
+    color: #55a7ff;
+}
+
+.market-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
 }
 
-.team {
-    background: #0e141b;
-    border: 1px solid #252f3a;
-    padding: 15px;
-    border-radius: 9px;
-}
-
-.team-name {
-    font-weight: 800;
-    font-size: 17px;
-}
-
-.team-abbr {
-    color: #6f7c8b;
-    font-size: 12px;
-    margin-top: 3px;
-}
-
-.odds-grid {
-    margin-top: 15px;
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-    gap: 8px;
-}
-
-.odds-box {
-    background: #18212b;
-    padding: 10px;
-    border-radius: 7px;
-    text-align: center;
-}
-
-.odds-label {
-    color: #758392;
-    font-size: 10px;
-    text-transform: uppercase;
-}
-
-.odds-value {
-    font-weight: 800;
-    margin-top: 5px;
-}
-
-.best {
-    color: #21d07a;
-}
-
-.insight {
-    margin-top: 15px;
-    padding: 13px;
+.market {
+    background: #0c1218;
+    padding: 12px;
     border-radius: 8px;
-    background: #111a20;
-    border-left: 3px solid #21d07a;
 }
 
-.insight-title {
-    font-size: 11px;
-    color: #21d07a;
-    font-weight: 800;
-    text-transform: uppercase;
-    margin-bottom: 6px;
-}
-
-.insight p {
-    margin: 0;
-    font-size: 13px;
-    line-height: 1.45;
-    color: #b3bdc8;
-}
-
-.signal {
-    margin-top: 12px;
-    display: flex;
-    justify-content: space-between;
+.market-label {
     font-size: 12px;
+    color: #7f8b99;
+    margin-bottom: 5px;
 }
 
-.signal strong {
-    color: #21d07a;
+.market-value {
+    font-size: 17px;
+    font-weight: bold;
 }
 
-.dashboard {
-    display: grid;
-    grid-template-columns: repeat(4,1fr);
-    gap: 15px;
-}
-
-.stat {
-    background: #121922;
-    border: 1px solid #293542;
-    border-radius: 10px;
-    padding: 18px;
-}
-
-.stat-label {
-    color: #7c8997;
-    font-size: 12px;
-}
-
-.stat-number {
-    font-size: 25px;
-    font-weight: 800;
-    margin-top: 8px;
-}
-
-.props {
-    overflow-x: auto;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    background: #121922;
-    border: 1px solid #293542;
-    border-radius: 10px;
-    overflow: hidden;
-}
-
-th,
-td {
-    padding: 13px;
-    text-align: left;
-    border-bottom: 1px solid #26313d;
+.probability {
+    color: #45d483;
     font-size: 13px;
+    margin-top: 4px;
 }
 
-th {
-    color: #7d8b99;
-    background: #171f29;
-    text-transform: uppercase;
-    font-size: 11px;
-}
-
-td {
-    color: #dbe1e7;
-}
-
-.green {
-    color: #21d07a;
-    font-weight: 800;
-}
-
-.yellow {
-    color: #e9c46a;
-    font-weight: 800;
-}
-
-.red {
-    color: #ff6b6b;
-    font-weight: 800;
-}
-
-footer {
-    margin-top: 60px;
-    border-top: 1px solid #222d38;
-    padding: 25px;
+.no-data {
     text-align: center;
-    color: #64717f;
-    font-size: 12px;
+    padding: 40px;
+    color: #8d9aaa;
 }
 
-@media(max-width: 900px) {
-    .games {
+@media(max-width:700px) {
+    .market-grid {
         grid-template-columns: 1fr;
-    }
-
-    .dashboard {
-        grid-template-columns: repeat(2,1fr);
-    }
-
-    nav {
-        display: none;
-    }
-}
-
-@media(max-width: 600px) {
-    .hero h1 {
-        font-size: 28px;
-    }
-
-    .dashboard {
-        grid-template-columns: 1fr;
-    }
-
-    .odds-grid {
-        grid-template-columns: repeat(3,1fr);
     }
 }
 </style>
@@ -361,567 +135,265 @@ footer {
 <body>
 
 <header>
-    <div class="nav">
-        <div class="logo">NFL <span>ODDS HUB</span></div>
-
-        <nav>
-            <a href="#games">ODDS</a>
-            <a href="#insights">INSIGHTS</a>
-            <a href="#props">PROPS</a>
-            <a href="#market">MARKET</a>
-        </nav>
+    <div class="header-inner">
+        <h1>🏈 NFL ODDS</h1>
+        <div class="subtitle">
+            Live sportsbook comparison & implied probabilities
+        </div>
     </div>
 </header>
 
-<section class="hero">
-    <div class="hero-inner">
-        <h1>NFL Betting Board</h1>
-        <p>Odds • Probability • Market Movement • Sharp Signals</p>
-    </div>
-</section>
+<div class="container">
 
-<main class="container">
-
-<div class="controls">
-    <button class="active" onclick="filterGames('ALL',this)">ALL GAMES</button>
-    <button onclick="filterGames('1PM',this)">1 PM</button>
-    <button onclick="filterGames('4PM',this)">4 PM</button>
-    <button onclick="filterGames('PRIME',this)">PRIME TIME</button>
-
-    <select id="sortSelect" onchange="sortGames()">
-        <option value="time">Sort by kickoff</option>
-        <option value="spread">Sort by spread</option>
-        <option value="total">Sort by total</option>
-    </select>
-
-    <input
-        type="text"
-        id="search"
-        placeholder="Search team..."
-        onkeyup="searchGames()"
-    >
-</div>
-
-<section id="market">
-
-<div class="section-title">
-    <h2>Market Snapshot</h2>
-    <span>Week 3 • 2026 NFL Season</span>
-</div>
-
-<div class="dashboard">
-
-    <div class="stat">
-        <div class="stat-label">NFL GAMES</div>
-        <div class="stat-number">16</div>
+    <div class="status">
+        <div>Data source: <span>Live Odds API</span></div>
+        <div id="updated">Loading latest odds...</div>
     </div>
 
-    <div class="stat">
-        <div class="stat-label">BIGGEST FAVORITE</div>
-        <div class="stat-number">SF -13.5</div>
-    </div>
-
-    <div class="stat">
-        <div class="stat-label">HIGHEST TOTAL</div>
-        <div class="stat-number">50.5</div>
-    </div>
-
-    <div class="stat">
-        <div class="stat-label">NEXT KICKOFF</div>
-        <div class="stat-number">1:00 PM</div>
-    </div>
+    <div id="games"></div>
 
 </div>
-
-</section>
-
-<section id="games">
-
-<div class="section-title">
-    <h2>Week 3 NFL Odds</h2>
-    <span id="gameCount">16 Games</span>
-</div>
-
-<div class="games" id="gamesContainer"></div>
-
-</section>
-
-<section id="insights">
-
-<div class="section-title">
-    <h2>Market Insights</h2>
-    <span>Signals generated from available market data</span>
-</div>
-
-<div class="game-card">
-    <div class="game-body">
-
-        <div class="insight">
-            <div class="insight-title">Largest Favorite</div>
-            <p>
-                San Francisco is currently listed around -13.5 against Miami.
-                This is the largest spread on the Week 3 board.
-            </p>
-        </div>
-
-        <div class="insight">
-            <div class="insight-title">High Total</div>
-            <p>
-                Washington at Dallas carries one of the highest projected totals
-                on the board at approximately 50.5.
-            </p>
-        </div>
-
-        <div class="insight">
-            <div class="insight-title">Market Signal</div>
-            <p>
-                When ticket percentage and money percentage diverge substantially,
-                the site will flag the game for further review once live betting
-                split data is connected.
-            </p>
-        </div>
-
-    </div>
-</div>
-
-</section>
-
-<section id="props">
-
-<div class="section-title">
-    <h2>Player Props</h2>
-    <span>Sample interface — live prop feed coming next</span>
-</div>
-
-<div class="props">
-
-<table>
-<thead>
-<tr>
-    <th>Player</th>
-    <th>Prop</th>
-    <th>Line</th>
-    <th>Over</th>
-    <th>Under</th>
-    <th>Market Signal</th>
-</tr>
-</thead>
-
-<tbody>
-
-<tr>
-    <td>Player Example</td>
-    <td>Passing Yards</td>
-    <td>275.5</td>
-    <td>-110</td>
-    <td>-110</td>
-    <td class="yellow">WATCH</td>
-</tr>
-
-<tr>
-    <td>Player Example</td>
-    <td>Receiving Yards</td>
-    <td>72.5</td>
-    <td>-105</td>
-    <td>-115</td>
-    <td class="green">OVER LEAN</td>
-</tr>
-
-<tr>
-    <td>Player Example</td>
-    <td>Rushing Yards</td>
-    <td>64.5</td>
-    <td>-115</td>
-    <td>-105</td>
-    <td class="yellow">WATCH</td>
-</tr>
-
-</tbody>
-</table>
-
-</div>
-
-</section>
-
-<footer>
-    NFL Odds Hub • Market data is for informational purposes only.
-    Odds change frequently. Always verify current sportsbook prices.
-</footer>
-
-</main>
 
 <script>
 
-const games = [
-
-{
-    time:"1PM",
-    kickoff:"1:00 PM",
-    away:"Eagles",
-    awayAbbr:"PHI",
-    home:"Titans",
-    homeAbbr:"TEN",
-    spread:"PHI -7.0",
-    ml:"PHI -336 / TEN +269",
-    total:"39.5",
-    insight:"Philadelphia is listed as a substantial road favorite. Monitor whether the spread moves through key numbers before kickoff."
-},
-
-{
-    time:"1PM",
-    kickoff:"1:00 PM",
-    away:"Steelers",
-    awayAbbr:"PIT",
-    home:"Patriots",
-    homeAbbr:"NE",
-    spread:"NE -5.5",
-    ml:"PIT +198 / NE -236",
-    total:"41.5",
-    insight:"New England is a moderate home favorite. Watch for meaningful movement around the 5.5 number."
-},
-
-{
-    time:"1PM",
-    kickoff:"1:00 PM",
-    away:"Vikings",
-    awayAbbr:"MIN",
-    home:"Bears",
-    homeAbbr:"CHI",
-    spread:"CHI -4.5",
-    ml:"MIN +183 / CHI -220",
-    total:"48.0",
-    insight:"Chicago is favored at home. The total sits near 48, making this one of the higher-scoring projected games."
-},
-
-{
-    time:"1PM",
-    kickoff:"1:00 PM",
-    away:"Panthers",
-    awayAbbr:"CAR",
-    home:"Falcons",
-    homeAbbr:"ATL",
-    spread:"CAR -2.5",
-    ml:"CAR -144 / ATL +123",
-    total:"43.5",
-    insight:"Carolina is a short road favorite. Small spread movement can materially change the value of this matchup."
-},
-
-{
-    time:"1PM",
-    kickoff:"1:00 PM",
-    away:"Packers",
-    awayAbbr:"GB",
-    home:"Jets",
-    homeAbbr:"NYJ",
-    spread:"GB -3.5",
-    ml:"GB -186 / NYJ +156",
-    total:"44.5",
-    insight:"Green Bay is favored by a field goal plus. Three-and-a-half is a key number worth monitoring."
-},
-
-{
-    time:"1PM",
-    kickoff:"1:00 PM",
-    away:"Saints",
-    awayAbbr:"NO",
-    home:"Ravens",
-    homeAbbr:"BAL",
-    spread:"BAL -8.0",
-    ml:"NO +327 / BAL -423",
-    total:"46.5",
-    insight:"Baltimore is one of the larger favorites on the board."
-},
-
-{
-    time:"1PM",
-    kickoff:"1:00 PM",
-    away:"Bengals",
-    awayAbbr:"CIN",
-    home:"Texans",
-    homeAbbr:"HOU",
-    spread:"HOU -2.5",
-    ml:"CIN +124 / HOU -148",
-    total:"45.5",
-    insight:"Houston is a short home favorite. This is a matchup where half-point movement can be important."
-},
-
-{
-    time:"1PM",
-    kickoff:"1:00 PM",
-    away:"Browns",
-    awayAbbr:"CLE",
-    home:"Buccaneers",
-    homeAbbr:"TB",
-    spread:"TB -8.0",
-    ml:"CLE +332 / TB -434",
-    total:"41.5",
-    insight:"Tampa Bay is among the larger favorites on the Week 3 board."
-},
-
-{
-    time:"4PM",
-    kickoff:"4:05 PM",
-    away:"Jaguars",
-    awayAbbr:"JAX",
-    home:"Broncos",
-    homeAbbr:"DEN",
-    spread:"DEN -3.0",
-    ml:"JAX +130 / DEN -153",
-    total:"45.5",
-    insight:"Denver is a short home favorite. Three is a major NFL key number."
-},
-
-{
-    time:"4PM",
-    kickoff:"4:05 PM",
-    away:"Raiders",
-    awayAbbr:"LV",
-    home:"Chargers",
-    homeAbbr:"LAC",
-    spread:"LAC -6.5",
-    ml:"LV +247 / LAC -303",
-    total:"43.5",
-    insight:"Los Angeles is favored by more than a touchdown minus the key half point."
-},
-
-{
-    time:"4PM",
-    kickoff:"4:25 PM",
-    away:"Seahawks",
-    awayAbbr:"SEA",
-    home:"Cardinals",
-    homeAbbr:"ARI",
-    spread:"SEA -4.0",
-    ml:"SEA -205 / ARI +173",
-    total:"41.0",
-    insight:"Seattle is favored on the road. Monitor whether the number approaches the 3.5 range."
-},
-
-{
-    time:"4PM",
-    kickoff:"4:25 PM",
-    away:"Dolphins",
-    awayAbbr:"MIA",
-    home:"49ers",
-    homeAbbr:"SF",
-    spread:"SF -13.5",
-    ml:"MIA +639 / SF -954",
-    total:"45.5",
-    insight:"San Francisco has the largest listed spread on the board."
-},
-
-{
-    time:"4PM",
-    kickoff:"4:25 PM",
-    away:"Commanders",
-    awayAbbr:"WAS",
-    home:"Cowboys",
-    homeAbbr:"DAL",
-    spread:"DAL -4.0",
-    ml:"WAS +171 / DAL -202",
-    total:"50.5",
-    insight:"One of the highest totals on the board. This game is a major market to monitor for total movement."
-},
-
-{
-    time:"PRIME",
-    kickoff:"8:20 PM",
-    away:"Colts",
-    awayAbbr:"IND",
-    home:"Chiefs",
-    homeAbbr:"KC",
-    spread:"KC -6.5",
-    ml:"IND +249 / KC -306",
-    total:"46.5",
-    insight:"Kansas City is a significant home favorite in Sunday Night Football."
-},
-
-{
-    time:"PRIME",
-    kickoff:"8:15 PM",
-    away:"Giants",
-    awayAbbr:"NYG",
-    home:"Rams",
-    homeAbbr:"LAR",
-    spread:"LAR -7.0",
-    ml:"NYG +273 / LAR -346",
-    total:"48.0",
-    insight:"Los Angeles is favored by a touchdown in Monday Night Football."
-}
-
-];
-
 function americanToProbability(odds) {
 
-    let value = parseInt(odds);
+    odds = Number(odds);
 
-    if(value < 0) {
-        return ((-value) / ((-value) + 100) * 100).toFixed(1);
+    if (odds < 0) {
+        return (-odds / (-odds + 100)) * 100;
     }
 
-    return (100 / (value + 100) * 100).toFixed(1);
+    return (100 / (odds + 100)) * 100;
 }
 
-function renderGames(list = games) {
+function formatOdds(odds) {
 
-    const container = document.getElementById("gamesContainer");
+    odds = Number(odds);
 
-    container.innerHTML = "";
+    if (odds > 0) {
+        return "+" + odds;
+    }
 
-    list.forEach(game => {
+    return odds;
+}
 
-        const card = document.createElement("div");
+function getMarket(book, marketKey) {
 
-        card.className = "game-card";
+    if (!book.markets) return null;
 
-        card.dataset.time = game.time;
+    return book.markets.find(m => m.key === marketKey);
+}
 
-        card.innerHTML = `
+function findOutcome(market, name) {
 
-        <div class="game-header">
-            <span>${game.kickoff}</span>
-            <span>WEEK 3</span>
+    if (!market || !market.outcomes) return null;
+
+    return market.outcomes.find(o => o.name === name);
+}
+
+function createMarket(label, outcome) {
+
+    if (!outcome) {
+
+        return `
+        <div class="market">
+            <div class="market-label">${label}</div>
+            <div class="market-value">—</div>
+        </div>
+        `;
+
+    }
+
+    let odds = Number(outcome.price);
+
+    let probability = americanToProbability(odds);
+
+    let point = "";
+
+    if (outcome.point !== undefined) {
+        point = outcome.point > 0
+            ? "+" + outcome.point
+            : outcome.point;
+    }
+
+    return `
+    <div class="market">
+
+        <div class="market-label">
+            ${label}
         </div>
 
-        <div class="game-body">
+        <div class="market-value">
+            ${point} ${formatOdds(odds)}
+        </div>
 
-            <div class="teams">
+        <div class="probability">
+            ${probability.toFixed(1)}% implied
+        </div>
 
-                <div class="team">
-                    <div class="team-name">${game.away}</div>
-                    <div class="team-abbr">${game.awayAbbr} • AWAY</div>
-                </div>
+    </div>
+    `;
+}
 
-                <div class="team">
-                    <div class="team-name">${game.home}</div>
-                    <div class="team-abbr">${game.homeAbbr} • HOME</div>
-                </div>
+function createGame(game) {
 
+    let books = game.bookmakers || [];
+
+    let html = "";
+
+    html += `
+    <div class="game">
+
+        <div class="game-header">
+
+            <div class="game-title">
+                ${game.away_team} @ ${game.home_team}
             </div>
 
-            <div class="odds-grid">
-
-                <div class="odds-box">
-                    <div class="odds-label">Spread</div>
-                    <div class="odds-value">${game.spread}</div>
-                </div>
-
-                <div class="odds-box">
-                    <div class="odds-label">Moneyline</div>
-                    <div class="odds-value">${game.ml}</div>
-                </div>
-
-                <div class="odds-box">
-                    <div class="odds-label">Total</div>
-                    <div class="odds-value">${game.total}</div>
-                </div>
-
+            <div>
+                ${new Date(game.commence_time).toLocaleString()}
             </div>
 
-            <div class="insight">
+        </div>
+    `;
 
-                <div class="insight-title">
-                    MARKET INSIGHT
-                </div>
+    books.forEach(book => {
 
-                <p>${game.insight}</p>
+        let moneyline = getMarket(book, "h2h");
+        let spreads = getMarket(book, "spreads");
+        let totals = getMarket(book, "totals");
 
+        let awayML = moneyline
+            ? findOutcome(moneyline, game.away_team)
+            : null;
+
+        let homeML = moneyline
+            ? findOutcome(moneyline, game.home_team)
+            : null;
+
+        let awaySpread = spreads
+            ? findOutcome(spreads, game.away_team)
+            : null;
+
+        let homeSpread = spreads
+            ? findOutcome(spreads, game.home_team)
+            : null;
+
+        let over = totals
+            ? findOutcome(totals, "Over")
+            : null;
+
+        let under = totals
+            ? findOutcome(totals, "Under")
+            : null;
+
+        html += `
+        <div class="book">
+
+            <div class="book-name">
+                ${book.title}
             </div>
 
-            <div class="signal">
+            <div class="market-grid">
 
-                <span>Market Probability</span>
+                ${createMarket(
+                    game.away_team + " ML",
+                    awayML
+                )}
 
-                <strong>TRACKING</strong>
+                ${createMarket(
+                    game.home_team + " ML",
+                    homeML
+                )}
+
+                ${createMarket(
+                    game.away_team + " Spread",
+                    awaySpread
+                )}
+
+                ${createMarket(
+                    game.home_team + " Spread",
+                    homeSpread
+                )}
+
+                ${createMarket(
+                    "Over",
+                    over
+                )}
+
+                ${createMarket(
+                    "Under",
+                    under
+                )}
 
             </div>
 
         </div>
         `;
 
-        container.appendChild(card);
-
     });
 
-    document.getElementById("gameCount").innerText =
-        list.length + " Games";
+    html += `</div>`;
+
+    return html;
 }
 
-function filterGames(type, button) {
+async function loadOdds() {
 
-    document
-        .querySelectorAll(".controls button")
-        .forEach(btn => btn.classList.remove("active"));
+    const gamesContainer = document.getElementById("games");
 
-    button.classList.add("active");
+    try {
 
-    if(type === "ALL") {
+        const response = await fetch("odds.json");
 
-        renderGames(games);
+        if (!response.ok) {
+            throw new Error("Could not load odds.json");
+        }
 
-        return;
-    }
+        const games = await response.json();
 
-    renderGames(
-        games.filter(game => game.time === type)
-    );
-}
+        document.getElementById("updated").innerHTML =
+            "Latest odds loaded: <span>LIVE DATA</span>";
 
-function searchGames() {
+        if (!games || games.length === 0) {
 
-    const query =
-        document.getElementById("search").value.toLowerCase();
+            gamesContainer.innerHTML = `
+                <div class="no-data">
+                    No NFL odds are currently available.
+                </div>
+            `;
 
-    renderGames(
-        games.filter(game =>
-            game.away.toLowerCase().includes(query) ||
-            game.home.toLowerCase().includes(query) ||
-            game.awayAbbr.toLowerCase().includes(query) ||
-            game.homeAbbr.toLowerCase().includes(query)
-        )
-    );
-}
+            return;
+        }
 
-function sortGames() {
-
-    const type =
-        document.getElementById("sortSelect").value;
-
-    let sorted = [...games];
-
-    if(type === "time") {
-
-        sorted.sort((a,b) =>
-            a.kickoff.localeCompare(b.kickoff)
-        );
+        gamesContainer.innerHTML =
+            games.map(createGame).join("");
 
     }
 
-    if(type === "spread") {
+    catch (error) {
 
-        sorted.sort((a,b) =>
-            parseFloat(a.spread.replace(/[^\d.-]/g,"")) -
-            parseFloat(b.spread.replace(/[^\d.-]/g,""))
-        );
+        console.error(error);
+
+        gamesContainer.innerHTML = `
+            <div class="no-data">
+                Unable to load live NFL odds.
+                <br><br>
+                Make sure odds.json exists in the repository.
+            </div>
+        `;
+
+        document.getElementById("updated").innerHTML =
+            "Unable to load latest odds";
 
     }
 
-    if(type === "total") {
-
-        sorted.sort((a,b) =>
-            parseFloat(a.total) -
-            parseFloat(b.total)
-        );
-
-    }
-
-    renderGames(sorted);
 }
 
-renderGames();
+loadOdds();
 
 </script>
 
 </body>
 </html>
-```
