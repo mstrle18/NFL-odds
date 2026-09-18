@@ -1,0 +1,36 @@
+name: Update NFL Odds
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "15 * * * *"
+
+permissions:
+  contents: write
+
+jobs:
+  update-odds:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Get website files
+        uses: actions/checkout@v4
+
+      - name: Download NFL odds
+        env:
+          ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+        run: |
+          curl -L "https://api.the-odds-api.com/v4/sports/americanfootball_nfl/odds/?apiKey=$ODDS_API_KEY&regions=us&markets=h2h,spreads,totals&oddsFormat=american" \
+          -o odds.json
+
+      - name: Save updated odds
+        run: |
+          echo "Odds updated at $(date -u)" > odds-updated.txt
+
+      - name: Commit updated data
+        run: |
+          git config user.name "NFL Odds Bot"
+          git config user.email "actions@github.com"
+          git add odds.json odds-updated.txt
+          git diff --cached --quiet || git commit -m "Update NFL odds"
+          git push
