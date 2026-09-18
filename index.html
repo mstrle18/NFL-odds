@@ -4,273 +4,302 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>NFL Odds Edge</title>
 
 <style>
+
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 body {
-  margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  background: #080d18;
-  color: white;
+    margin: 0;
+    background: #080d18;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 header {
-  background: #10182b;
-  border-bottom: 1px solid #263452;
-  padding: 22px 16px 0;
+    background: #111a2e;
+    border-bottom: 1px solid #293653;
+    padding: 22px 16px 0;
 }
 
 .header {
-  max-width: 1200px;
-  margin: auto;
+    max-width: 1200px;
+    margin: auto;
 }
 
 h1 {
-  margin: 0;
-  font-size: 29px;
+    margin: 0;
+    font-size: 30px;
 }
 
 .subtitle {
-  color: #9ca8c7;
-  margin-top: 6px;
+    color: #9da9c5;
+    margin-top: 6px;
 }
 
 nav {
-  display: flex;
-  gap: 8px;
-  max-width: 1200px;
-  margin: 20px auto 0;
-  overflow-x: auto;
-  padding-bottom: 12px;
+    display: flex;
+    gap: 8px;
+    max-width: 1200px;
+    margin: 20px auto 0;
+    overflow-x: auto;
+    padding-bottom: 12px;
 }
 
 nav button {
-  background: #1b2743;
-  border: 0;
-  color: white;
-  padding: 11px 17px;
-  border-radius: 8px;
-  cursor: pointer;
-  white-space: nowrap;
+    border: 0;
+    background: #1c2946;
+    color: white;
+    padding: 11px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    white-space: nowrap;
 }
 
 nav button.active {
-  background: white;
-  color: #111827;
+    background: white;
+    color: #111827;
 }
 
 main {
-  max-width: 1200px;
-  margin: 25px auto;
-  padding: 0 16px;
-}
-
-.stats {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
-  margin-bottom: 22px;
-}
-
-.stat {
-  background: #10182b;
-  border: 1px solid #263452;
-  padding: 17px;
-  border-radius: 12px;
-}
-
-.stat-title {
-  color: #9ca8c7;
-  font-size: 12px;
-}
-
-.stat-value {
-  font-size: 25px;
-  font-weight: bold;
-  margin-top: 6px;
-}
-
-.game {
-  background: #10182b;
-  border: 1px solid #263452;
-  border-radius: 14px;
-  margin-bottom: 18px;
-  overflow: hidden;
-}
-
-.game-header {
-  padding: 17px;
-  border-bottom: 1px solid #263452;
-  display: flex;
-  justify-content: space-between;
-}
-
-.game-title {
-  font-size: 18px;
-  font-weight: bold;
-}
-
-.game-time {
-  color: #9ca8c7;
-}
-
-.market {
-  padding: 16px;
-  border-bottom: 1px solid #263452;
-}
-
-.market:last-child {
-  border-bottom: 0;
-}
-
-.market-title {
-  color: #9ca8c7;
-  font-size: 12px;
-  text-transform: uppercase;
-  margin-bottom: 10px;
-}
-
-.odds {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-}
-
-.odds-card {
-  background: #18233d;
-  padding: 13px;
-  border-radius: 9px;
-}
-
-.team {
-  font-weight: bold;
-}
-
-.line {
-  margin-top: 5px;
-}
-
-.prob {
-  color: #72e6a5;
-  font-size: 13px;
-  margin-top: 5px;
-}
-
-.sportsbooks {
-  color: #9ca8c7;
-  font-size: 12px;
-  margin-top: 5px;
-}
-
-.props-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 18px;
-}
-
-.props-card {
-  background: #10182b;
-  border: 1px solid #263452;
-  border-radius: 14px;
-  padding: 18px;
-}
-
-.props-card h2 {
-  margin-top: 0;
-}
-
-.prop {
-  display: flex;
-  justify-content: space-between;
-  padding: 14px 0;
-  border-bottom: 1px solid #263452;
-}
-
-.prop:last-child {
-  border-bottom: 0;
-}
-
-.prop-name {
-  font-weight: bold;
-}
-
-.prop-detail {
-  color: #9ca8c7;
-  font-size: 13px;
-  margin-top: 4px;
-}
-
-.prop-right {
-  text-align: right;
-}
-
-.green {
-  color: #72e6a5;
-}
-
-.yellow {
-  color: #ffd166;
-}
-
-.book {
-  display: inline-block;
-  background: #263452;
-  padding: 4px 7px;
-  border-radius: 5px;
-  font-size: 11px;
-  margin-top: 5px;
+    max-width: 1200px;
+    margin: 25px auto;
+    padding: 0 16px;
 }
 
 .hidden {
-  display: none;
+    display: none;
 }
 
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 22px;
+}
+
+.stat {
+    background: #111a2e;
+    border: 1px solid #293653;
+    border-radius: 12px;
+    padding: 17px;
+}
+
+.stat-title {
+    color: #9da9c5;
+    font-size: 12px;
+}
+
+.stat-value {
+    font-size: 25px;
+    font-weight: bold;
+    margin-top: 6px;
+}
+
+.game {
+    background: #111a2e;
+    border: 1px solid #293653;
+    border-radius: 14px;
+    margin-bottom: 18px;
+    overflow: hidden;
+}
+
+.game-header {
+    padding: 18px;
+    border-bottom: 1px solid #293653;
+    display: flex;
+    justify-content: space-between;
+}
+
+.game-title {
+    font-size: 19px;
+    font-weight: bold;
+}
+
+.game-time {
+    color: #9da9c5;
+}
+
+.market {
+    padding: 16px;
+    border-bottom: 1px solid #293653;
+}
+
+.market:last-child {
+    border-bottom: 0;
+}
+
+.market-title {
+    color: #9da9c5;
+    font-size: 12px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.odds {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.odds-card {
+    background: #192541;
+    border-radius: 9px;
+    padding: 14px;
+}
+
+.team {
+    font-weight: bold;
+}
+
+.line {
+    margin-top: 6px;
+}
+
+.prob {
+    color: #6ee7a0;
+    margin-top: 5px;
+    font-size: 13px;
+}
+
+.book {
+    color: #9da9c5;
+    font-size: 11px;
+    margin-top: 6px;
+}
+
+.props-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+.props-card,
 .info {
-  background: #10182b;
-  border: 1px solid #263452;
-  border-radius: 14px;
-  padding: 22px;
-  line-height: 1.6;
+    background: #111a2e;
+    border: 1px solid #293653;
+    border-radius: 14px;
+    padding: 20px;
 }
 
+.props-card h2,
 .info h2 {
-  margin-top: 0;
+    margin-top: 0;
+}
+
+.prop {
+    display: flex;
+    justify-content: space-between;
+    padding: 14px 0;
+    border-bottom: 1px solid #293653;
+}
+
+.prop:last-child {
+    border-bottom: 0;
+}
+
+.prop-name {
+    font-weight: bold;
+}
+
+.prop-detail {
+    color: #9da9c5;
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+.prop-right {
+    text-align: right;
+}
+
+.green {
+    color: #6ee7a0;
+}
+
+.yellow {
+    color: #ffd166;
+}
+
+.search {
+    width: 100%;
+    padding: 13px;
+    margin-bottom: 18px;
+    background: #111a2e;
+    border: 1px solid #293653;
+    color: white;
+    border-radius: 9px;
+    font-size: 15px;
+}
+
+.notice {
+    background: #17233d;
+    border: 1px solid #293653;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 18px;
+    color: #cbd5e1;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    text-align: left;
+    padding: 13px;
+    border-bottom: 1px solid #293653;
+}
+
+th {
+    color: #9da9c5;
+    font-size: 12px;
+    text-transform: uppercase;
 }
 
 @media (max-width: 700px) {
 
-  h1 {
-    font-size: 24px;
-  }
+    h1 {
+        font-size: 24px;
+    }
 
-  .stats {
-    grid-template-columns: repeat(2, 1fr);
-  }
+    .stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
 
-  .odds {
-    grid-template-columns: 1fr;
-  }
+    .odds {
+        grid-template-columns: 1fr;
+    }
 
-  .game-header {
-    display: block;
-  }
+    .game-header {
+        display: block;
+    }
 
-  .game-time {
-    margin-top: 6px;
-  }
+    .game-time {
+        margin-top: 6px;
+    }
 
-  .props-grid {
-    grid-template-columns: 1fr;
-  }
+    .props-grid {
+        grid-template-columns: 1fr;
+    }
+
+    table {
+        font-size: 13px;
+    }
 }
+
 </style>
 </head>
 
+
 <body>
+
 
 <header>
 
@@ -278,5 +307,1069 @@ main {
 
 <h1>🏈 NFL Odds Edge</h1>
 
-<div
+<div class="subtitle">
+NFL sportsbook odds • implied probabilities • consensus markets
+</div>
+
+</div>
+
+
+<nav>
+
+<button class="active" onclick="showTab('games', this)">
+Games
+</button>
+
+<button onclick="showTab('props', this)">
+Player Props
+</button>
+
+<button onclick="showTab('consensus', this)">
+Sportsbook Comparison
+</button>
+
+<button onclick="showTab('about', this)">
+How It Works
+</button>
+
+</nav>
+
+</header>
+
+
+<main>
+
+
+<!-- ================= GAMES ================= -->
+
+<section id="games">
+
+
+<div class="stats">
+
+<div class="stat">
+<div class="stat-title">NFL GAMES</div>
+<div class="stat-value">2</div>
+</div>
+
+<div class="stat">
+<div class="stat-title">MARKETS</div>
+<div class="stat-value">18</div>
+</div>
+
+<div class="stat">
+<div class="stat-title">SPORTSBOOKS</div>
+<div class="stat-value">5</div>
+</div>
+
+<div class="stat">
+<div class="stat-title">DATA</div>
+<div class="stat-value">DEMO</div>
+</div>
+
+</div>
+
+
+<div class="notice">
+
+<strong>Live odds coming next.</strong><br>
+This version is the website interface. The numbers below are demonstration odds that we'll replace with real sportsbook data.
+
+</div>
+
+
+<!-- GAME 1 -->
+
+<div class="game">
+
+
+<div class="game-header">
+
+<div class="game-title">
+Minnesota Vikings @ Chicago Bears
+</div>
+
+<div class="game-time">
+Sunday • 1:00 PM ET
+</div>
+
+</div>
+
+
+<!-- SPREAD -->
+
+<div class="market">
+
+<div class="market-title">
+Spread
+</div>
+
+
+<div class="odds">
+
+
+<div class="odds-card">
+
+<div class="team">
+Vikings
+</div>
+
+<div class="line">
++3.5 (-110)
+</div>
+
+<div class="prob">
+51.2% implied
+</div>
+
+<div class="book">
+DraftKings
+</div>
+
+</div>
+
+
+<div class="odds-card">
+
+<div class="team">
+Bears
+</div>
+
+<div class="line">
+-3.5 (-110)
+</div>
+
+<div class="prob">
+51.2% implied
+</div>
+
+<div class="book">
+DraftKings
+</div>
+
+</div>
+
+
+<div class="odds-card">
+
+<div class="team">
+Consensus
+</div>
+
+<div class="line">
+Bears -3.5
+</div>
+
+<div class="prob">
+51.2%
+</div>
+
+<div class="book">
+5 sportsbooks
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<!-- MONEYLINE -->
+
+<div class="market">
+
+<div class="market-title">
+Moneyline
+</div>
+
+
+<div class="odds">
+
+
+<div class="odds-card">
+
+<div class="team">
+Vikings
+</div>
+
+<div class="line">
++145
+</div>
+
+<div class="prob">
+40.8% implied
+</div>
+
+<div class="book">
+DraftKings
+</div>
+
+</div>
+
+
+<div class="odds-card">
+
+<div class="team">
+Bears
+</div>
+
+<div class="line">
+-170
+</div>
+
+<div class="prob">
+63.0% implied
+</div>
+
+<div class="book">
+DraftKings
+</div>
+
+</div>
+
+
+<div class="odds-card">
+
+<div class="team">
+Consensus
+</div>
+
+<div class="line">
+Bears -165
+</div>
+
+<div class="prob">
+62.3%
+</div>
+
+<div class="book">
+5 sportsbooks
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<!-- TOTAL -->
+
+<div class="market">
+
+<div class="market-title">
+Total
+</div>
+
+
+<div class="odds">
+
+
+<div class="odds-card">
+
+<div class="team">
+Over
+</div>
+
+<div class="line">
+44.5 (-110)
+</div>
+
+<div class="prob">
+51.2%
+</div>
+
+<div class="book">
+DraftKings
+</div>
+
+</div>
+
+
+<div class="odds-card">
+
+<div class="team">
+Under
+</div>
+
+<div class="line">
+44.5 (-110)
+</div>
+
+<div class="prob">
+51.2%
+</div>
+
+<div class="book">
+DraftKings
+</div>
+
+</div>
+
+
+<div class="odds-card">
+
+<div class="team">
+Consensus
+</div>
+
+<div class="line">
+44.5
+</div>
+
+<div class="prob">
+51.2%
+</div>
+
+<div class="book">
+5 sportsbooks
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- GAME 2 -->
+
+<div class="game">
+
+
+<div class="game-header">
+
+<div class="game-title">
+Green Bay Packers @ New York Jets
+</div>
+
+<div class="game-time">
+Sunday • 1:00 PM ET
+</div>
+
+</div>
+
+
+<div class="market">
+
+<div class="market-title">
+Spread
+</div>
+
+
+<div class="odds">
+
+
+<div class="odds-card">
+
+<div class="team">
+Packers
+</div>
+
+<div class="line">
+-6.5 (-110)
+</div>
+
+<div class="prob">
+51.2%
+</div>
+
+<div class="book">
+FanDuel
+</div>
+
+</div>
+
+
+<div class="odds-card">
+
+<div class="team">
+Jets
+</div>
+
+<div class="line">
++6.5 (-110)
+</div>
+
+<div class="prob">
+51.2%
+</div>
+
+<div class="book">
+FanDuel
+</div>
+
+</div>
+
+
+<div class="odds-card">
+
+<div class="team">
+Consensus
+</div>
+
+<div class="line">
+Packers -6.5
+</div>
+
+<div class="prob">
+51.2%
+</div>
+
+<div class="book">
+5 sportsbooks
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<div class="market">
+
+<div class="market-title">
+Moneyline
+</div>
+
+
+<div class="odds">
+
+
+<div class="odds-card">
+
+<div class="team">
+Packers
+</div>
+
+<div class="line">
+-260
+</div>
+
+<div class="prob">
+72.2%
+</div>
+
+<div class="book">
+FanDuel
+</div>
+
+</div>
+
+
+<div class="odds-card">
+
+<div class="team">
+Jets
+</div>
+
+<div class="line">
++215
+</div>
+
+<div class="prob">
+31.7%
+</div>
+
+<div class="book">
+FanDuel
+</div>
+
+</div>
+
+
+<div class="odds-card">
+
+<div class="team">
+Consensus
+</div>
+
+<div class="line">
+Packers -250
+</div>
+
+<div class="prob">
+71.4%
+</div>
+
+<div class="book">
+5 sportsbooks
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+
+<div class="market">
+
+<div class="market-title">
+Total
+</div>
+
+
+<div class="odds">
+
+
+<div class="odds-card">
+
+<div class="team">
+Over
+</div>
+
+<div class="line">
+43.5 (-110)
+</div>
+
+<div class="prob">
+51.2%
+</div>
+
+<div class="book">
+FanDuel
+</div>
+
+</div>
+
+
+<div class="odds-card">
+
+<div class="team">
+Under
+</div>
+
+<div class="line">
+43.5 (-110)
+</div>
+
+<div class="prob">
+51.2%
+</div>
+
+<div class="book">
+FanDuel
+</div>
+
+</div>
+
+
+<div class="odds-card">
+
+<div class="team">
+Consensus
+</div>
+
+<div class="line">
+43.5
+</div>
+
+<div class="prob">
+51.2%
+</div>
+
+<div class="book">
+5 sportsbooks
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+</div>
+
+
+</section>
+
+
+
+<!-- ================= PROPS ================= -->
+
+<section id="props" class="hidden">
+
+
+<input
+class="search"
+type="text"
+placeholder="Search player props..."
+onkeyup="searchProps(this.value)"
+>
+
+
+<div class="props-grid">
+
+
+<div class="props-card">
+
+<h2>🔥 Player Props</h2>
+
+
+<div class="prop">
+
+<div>
+
+<div class="prop-name">
+Caleb Williams
+</div>
+
+<div class="prop-detail">
+Passing Yards • Over 249.5
+</div>
+
+</div>
+
+<div class="prop-right">
+
+-115<br>
+
+<span class="green">
+53.5%
+</span>
+
+<div class="book">
+DraftKings
+</div>
+
+</div>
+
+</div>
+
+
+
+<div class="prop">
+
+<div>
+
+<div class="prop-name">
+Justin Jefferson
+</div>
+
+<div class="prop-detail">
+Receiving Yards • Over 87.5
+</div>
+
+</div>
+
+<div class="prop-right">
+
+-110<br>
+
+<span class="green">
+51.2%
+</span>
+
+<div class="book">
+FanDuel
+</div>
+
+</div>
+
+</div>
+
+
+
+<div class="prop">
+
+<div>
+
+<div class="prop-name">
+CeeDee Lamb
+</div>
+
+<div class="prop-detail">
+Receiving Yards • Over 79.5
+</div>
+
+</div>
+
+<div class="prop-right">
+
++100<br>
+
+<span class="green">
+50.0%
+</span>
+
+<div class="book">
+BetMGM
+</div>
+
+</div>
+
+</div>
+
+
+
+<div class="prop">
+
+<div>
+
+<div class="prop-name">
+Jahmyr Gibbs
+</div>
+
+<div class="prop-detail">
+Rushing Yards • Over 62.5
+</div>
+
+</div>
+
+<div class="prop-right">
+
+-120<br>
+
+<span class="green">
+54.5%
+</span>
+
+<div class="book">
+DraftKings
+</div>
+
+</div>
+
+</div>
+
+
+</div>
+
+
+<div class="props-card">
+
+<h2>Popular Markets</h2>
+
+
+<div class="prop">
+
+<div>
+
+<div class="prop-name">
+Passing Yards
+</div>
+
+<div class="prop-detail">
+Quarterbacks
+</div>
+
+</div>
+
+<div class="prop-right green">
+18
+</div>
+
+</div>
+
+
+<div class="prop">
+
+<div>
+
+<div class="prop-name">
+Rushing Yards
+</div>
+
+<div class="prop-detail">
+Running Backs
+</div>
+
+</div>
+
+<div class="prop-right green">
+21
+</div>
+
+</div>
+
+
+<div class="prop">
+
+<div>
+
+<div class="prop-name">
+Receiving Yards
+</div>
+
+<div class="prop-detail">
+Wide Receivers
+</div>
+
+</div>
+
+<div class="prop-right green">
+24
+</div>
+
+</div>
+
+
+<div class="prop">
+
+<div>
+
+<div class="prop-name">
+Anytime Touchdown
+</div>
+
+<div class="prop-detail">
+Touchdown scorer
+</div>
+
+</div>
+
+<div class="prop-right green">
+16
+</div>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- ================= CONSENSUS ================= -->
+
+<section id="consensus" class="hidden">
+
+
+<div class="info">
+
+<h2>📊 Sportsbook Comparison</h2>
+
+<p>
+Compare the same NFL market across multiple sportsbooks.
+</p>
+
+
+<div class="game">
+
+<div class="market">
+
+<div class="market-title">
+Vikings @ Bears — Moneyline
+</div>
+
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Sportsbook</th>
+
+<th>Vikings</th>
+
+<th>Bears</th>
+
+<th>Best Number</th>
+
+</tr>
+
+</thead>
+
+
+<tbody>
+
+<tr>
+
+<td>DraftKings</td>
+
+<td>+145</td>
+
+<td>-170</td>
+
+<td class="green">+145</td>
+
+</tr>
+
+<tr>
+
+<td>FanDuel</td>
+
+<td>+150</td>
+
+<td>-175</td>
+
+<td class="green">+150</td>
+
+</tr>
+
+<tr>
+
+<td>BetMGM</td>
+
+<td>+140</td>
+
+<td>-165</td>
+
+<td class="green">+140</td>
+
+</tr>
+
+<tr>
+
+<td>Caesars</td>
+
+<td>+145</td>
+
+<td>-170</td>
+
+<td>+145</td>
+
+</tr>
+
+<tr>
+
+<td>BetRivers</td>
+
+<td>+148</td>
+
+<td>-172</td>
+
+<td class="green">+148</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- ================= ABOUT ================= -->
+
+<section id="about" class="hidden">
+
+
+<div class="info">
+
+<h2>How It Works</h2>
+
+
+<p>
+NFL Odds Edge converts American sportsbook odds into implied probability.
+</p>
+
+
+<h3>Positive Odds</h3>
+
+<p>
+Probability = 100 ÷ (Odds + 100)
+</p>
+
+
+<h3>Negative Odds</h3>
+
+<p>
+Probability = Odds ÷ (Odds + 100)
+</p>
+
+
+<p>
+For example, +150 has a raw implied probability of approximately 40%.
+</p>
+
+
+<h3>Consensus Odds</h3>
+
+<p>
+The planned live version will compare multiple sportsbooks and calculate a consensus market number.
+</p>
+
+
+<h3>Live Data</h3>
+
+<p>
+The current website uses demonstration data. The next version will connect to a legitimate sportsbook odds data provider so the markets can update automatically.
+</p>
+
+</div>
+
+</section>
+
+
+</main>
+
+
+
+<script>
+
+function showTab(tab, button) {
+
+    document.getElementById("games").classList.add("hidden");
+
+    document.getElementById("props").classList.add("hidden");
+
+    document.getElementById("consensus").classList.add("hidden");
+
+    document.getElementById("about").classList.add("hidden");
+
+
+    document.getElementById(tab).classList.remove("hidden");
+
+
+    document.querySelectorAll("nav button").forEach(function(btn) {
+
+        btn.classList.remove("active");
+
+    });
+
+
+    button.classList.add("active");
+
+}
+
+
+function searchProps(search) {
+
+    search = search.toLowerCase();
+
+    document.querySelectorAll(".prop").forEach(function(prop) {
+
+        if (prop.innerText.toLowerCase().includes(search)) {
+
+            prop.style.display = "flex";
+
+        } else {
+
+            prop.style.display = "none";
+
+        }
+
+    });
+
+}
+
+</script>
+
+
+</body>
+</html>
 ```
