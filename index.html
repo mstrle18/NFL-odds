@@ -1,399 +1,297 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NFL Odds</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gridiron Edge - AI Deployment Portal</title>
+    <style>
+        :root {
+            --bg-dark: #070a13;
+            --panel-bg: #111625;
+            --accent-green: #00ff88;
+            --accent-blue: #00d2ff;
+            --text-main: #f1f5f9;
+            --text-muted: #64748b;
+            --border-color: #1e293b;
+        }
 
-<style>
-* {
-    box-sizing: border-box;
-}
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    background: #0b0f14;
-    color: white;
-}
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            padding: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
 
-header {
-    background: #111820;
-    padding: 20px;
-    border-bottom: 1px solid #26313d;
-}
+        .portal-wrapper {
+            width: 100%;
+            max-width: 1000px;
+            background: var(--panel-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 2.5rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
 
-.header-inner {
-    max-width: 1200px;
-    margin: auto;
-}
+        header {
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 1.5rem;
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-h1 {
-    margin: 0;
-    font-size: 30px;
-}
+        h1 {
+            font-size: 1.6rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 800;
+        }
 
-.subtitle {
-    color: #8d9aaa;
-    margin-top: 6px;
-}
+        h1 span {
+            color: var(--accent-green);
+        }
 
-.container {
-    max-width: 1200px;
-    margin: auto;
-    padding: 25px 15px;
-}
+        .status-badge {
+            background: rgba(0, 255, 136, 0.1);
+            color: var(--accent-green);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            border: 1px solid rgba(0, 255, 136, 0.2);
+        }
 
-.status {
-    background: #111820;
-    border: 1px solid #26313d;
-    border-radius: 10px;
-    padding: 15px;
-    margin-bottom: 20px;
-}
+        .main-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
 
-.status span {
-    color: #45d483;
-    font-weight: bold;
-}
+        @media (max-width: 768px) {
+            .main-layout {
+                grid-template-columns: 1fr;
+            }
+        }
 
-.game {
-    background: #111820;
-    border: 1px solid #26313d;
-    border-radius: 12px;
-    margin-bottom: 18px;
-    overflow: hidden;
-}
+        .control-panel, .output-panel {
+            display: flex;
+            flex-direction: column;
+            gap: 1.25rem;
+        }
 
-.game-header {
-    padding: 15px 18px;
-    background: #161e27;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
+        .input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
 
-.game-title {
-    font-size: 19px;
-    font-weight: bold;
-}
+        label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            font-weight: 700;
+        }
 
-.book {
-    padding: 18px;
-    border-top: 1px solid #26313d;
-}
+        select, input {
+            background: #090d16;
+            border: 1px solid var(--border-color);
+            padding: 0.85rem;
+            border-radius: 6px;
+            color: #fff;
+            font-size: 0.95rem;
+            outline: none;
+            transition: all 0.2s ease;
+        }
 
-.book-name {
-    font-weight: bold;
-    margin-bottom: 12px;
-    color: #55a7ff;
-}
+        select:focus, input:focus {
+            border-color: var(--accent-blue);
+            box-shadow: 0 0 10px rgba(0, 210, 255, 0.2);
+        }
 
-.market-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-}
+        .action-btn {
+            background: var(--accent-green);
+            color: #070a13;
+            border: none;
+            padding: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: transform 0.1s, opacity 0.2s;
+            margin-top: 1rem;
+        }
 
-.market {
-    background: #0c1218;
-    padding: 12px;
-    border-radius: 8px;
-}
+        .action-btn:hover {
+            opacity: 0.9;
+        }
 
-.market-label {
-    font-size: 12px;
-    color: #7f8b99;
-    margin-bottom: 5px;
-}
+        .action-btn:active {
+            transform: scale(0.98);
+        }
 
-.market-value {
-    font-size: 17px;
-    font-weight: bold;
-}
+        .action-btn:disabled {
+            background: var(--border-color);
+            color: var(--text-muted);
+            cursor: not-allowed;
+            transform: none;
+        }
 
-.probability {
-    color: #45d483;
-    font-size: 13px;
-    margin-top: 4px;
-}
+        .terminal-box {
+            background: #05070c;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 1rem;
+            height: 220px;
+            overflow-y: auto;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.85rem;
+            color: #a6adbb;
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
 
-.no-data {
-    text-align: center;
-    padding: 40px;
-    color: #8d9aaa;
-}
+        .terminal-line.success { color: var(--accent-green); }
+        .terminal-line.info { color: var(--accent-blue); }
+        .terminal-line.warning { color: #fbbf24; }
 
-@media(max-width:700px) {
-    .market-grid {
-        grid-template-columns: 1fr;
-    }
-}
-</style>
+        .progress-section {
+            background: #090d16;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 1rem;
+            display: none;
+        }
+
+        .progress-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .progress-track {
+            background: #1e293b;
+            height: 6px;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, var(--accent-blue), var(--accent-green));
+            width: 0%;
+            height: 100%;
+            transition: width 0.2s ease;
+        }
+    </style>
 </head>
-
 <body>
 
-<header>
-    <div class="header-inner">
-        <h1>🏈 NFL ODDS</h1>
-        <div class="subtitle">
-            Live sportsbook comparison & implied probabilities
+<div class="portal-wrapper">
+    <header>
+        <h1>Gridiron Edge <span>// AI Model Transfer</span></h1>
+        <div class="status-badge" id="system-status">System Ready</div>
+    </header>
+
+    <div class="main-layout">
+        <!-- Configuration Side -->
+        <div class="control-panel">
+            <div class="input-group">
+                <label for="model-source">Select Target AI Model</label>
+                <select id="model-source">
+                    <option value="live-simulation-v4">Live Game Simulation Engine (v4.2-Beta)</option>
+                    <option value="prop-predict-v2">Player Prop Analytics Matrix (v2.0)</option>
+                    <option value="line-movement-v1">Real-time Line & Spread Optimization Core</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label for="destination-target">Destination Environment</label>
+                <input type="text" id="destination-target" value="https://cluster.internal">
+            </div>
+
+            <div class="input-group">
+                <label for="secure-key">Secure Access Key / Hash</label>
+                <input type="password" id="secure-key" value="••••••••••••••••••••••••••••">
+            </div>
+
+            <button class="action-btn" id="initiate-btn">Deploy & Transfer Core</button>
+        </div>
+
+        <!-- Terminal & Status Updates Side -->
+        <div class="output-panel">
+            <div class="terminal-box" id="terminal-output">
+                <div class="terminal-line">[SYSTEM] Matrix interface compiled successfully.</div>
+                <div class="terminal-line">[SYSTEM] Verification keys set. Awaiting manual activation flag...</div>
+            </div>
+
+            <div class="progress-section" id="progress-wrapper">
+                <div class="progress-meta">
+                    <span id="progress-text">Executing handshake protocol...</span>
+                    <span id="progress-pct">0%</span>
+                </div>
+                <div class="progress-track">
+                    <div class="progress-fill" id="progress-bar"></div>
+                </div>
+            </div>
         </div>
     </div>
-</header>
-
-<div class="container">
-
-    <div class="status">
-        <div>Data source: <span>Live Odds API</span></div>
-        <div id="updated">Loading latest odds...</div>
-    </div>
-
-    <div id="games"></div>
-
 </div>
 
 <script>
+    const initiateBtn = document.getElementById('initiate-btn');
+    const terminal = document.getElementById('terminal-output');
+    const progressWrapper = document.getElementById('progress-wrapper');
+    const progressBar = document.getElementById('progress-bar');
+    const progressText = document.getElementById('progress-text');
+    const progressPct = document.getElementById('progress-pct');
+    const systemStatus = document.getElementById('system-status');
 
-function americanToProbability(odds) {
-
-    odds = Number(odds);
-
-    if (odds < 0) {
-        return (-odds / (-odds + 100)) * 100;
+    function appendLog(message, styleClass = '') {
+        const line = document.createElement('div');
+        line.className = `terminal-line ${styleClass}`;
+        const time = new Date().toLocaleTimeString();
+        line.textContent = `[${time}] ${message}`;
+        terminal.appendChild(line);
+        terminal.scrollTop = terminal.scrollHeight;
     }
 
-    return (100 / (odds + 100)) * 100;
-}
-
-function formatOdds(odds) {
-
-    odds = Number(odds);
-
-    if (odds > 0) {
-        return "+" + odds;
-    }
-
-    return odds;
-}
-
-function getMarket(book, marketKey) {
-
-    if (!book.markets) return null;
-
-    return book.markets.find(m => m.key === marketKey);
-}
-
-function findOutcome(market, name) {
-
-    if (!market || !market.outcomes) return null;
-
-    return market.outcomes.find(o => o.name === name);
-}
-
-function createMarket(label, outcome) {
-
-    if (!outcome) {
-
-        return `
-        <div class="market">
-            <div class="market-label">${label}</div>
-            <div class="market-value">—</div>
-        </div>
-        `;
-
-    }
-
-    let odds = Number(outcome.price);
-
-    let probability = americanToProbability(odds);
-
-    let point = "";
-
-    if (outcome.point !== undefined) {
-        point = outcome.point > 0
-            ? "+" + outcome.point
-            : outcome.point;
-    }
-
-    return `
-    <div class="market">
-
-        <div class="market-label">
-            ${label}
-        </div>
-
-        <div class="market-value">
-            ${point} ${formatOdds(odds)}
-        </div>
-
-        <div class="probability">
-            ${probability.toFixed(1)}% implied
-        </div>
-
-    </div>
-    `;
-}
-
-function createGame(game) {
-
-    let books = game.bookmakers || [];
-
-    let html = "";
-
-    html += `
-    <div class="game">
-
-        <div class="game-header">
-
-            <div class="game-title">
-                ${game.away_team} @ ${game.home_team}
-            </div>
-
-            <div>
-                ${new Date(game.commence_time).toLocaleString()}
-            </div>
-
-        </div>
-    `;
-
-    books.forEach(book => {
-
-        let moneyline = getMarket(book, "h2h");
-        let spreads = getMarket(book, "spreads");
-        let totals = getMarket(book, "totals");
-
-        let awayML = moneyline
-            ? findOutcome(moneyline, game.away_team)
-            : null;
-
-        let homeML = moneyline
-            ? findOutcome(moneyline, game.home_team)
-            : null;
-
-        let awaySpread = spreads
-            ? findOutcome(spreads, game.away_team)
-            : null;
-
-        let homeSpread = spreads
-            ? findOutcome(spreads, game.home_team)
-            : null;
-
-        let over = totals
-            ? findOutcome(totals, "Over")
-            : null;
-
-        let under = totals
-            ? findOutcome(totals, "Under")
-            : null;
-
-        html += `
-        <div class="book">
-
-            <div class="book-name">
-                ${book.title}
-            </div>
-
-            <div class="market-grid">
-
-                ${createMarket(
-                    game.away_team + " ML",
-                    awayML
-                )}
-
-                ${createMarket(
-                    game.home_team + " ML",
-                    homeML
-                )}
-
-                ${createMarket(
-                    game.away_team + " Spread",
-                    awaySpread
-                )}
-
-                ${createMarket(
-                    game.home_team + " Spread",
-                    homeSpread
-                )}
-
-                ${createMarket(
-                    "Over",
-                    over
-                )}
-
-                ${createMarket(
-                    "Under",
-                    under
-                )}
-
-            </div>
-
-        </div>
-        `;
-
-    });
-
-    html += `</div>`;
-
-    return html;
-}
-
-async function loadOdds() {
-
-    const gamesContainer = document.getElementById("games");
-
-    try {
-
-        const response = await fetch("odds.json");
-
-        if (!response.ok) {
-            throw new Error("Could not load odds.json");
-        }
-
-        const games = await response.json();
-
-        document.getElementById("updated").innerHTML =
-            "Latest odds loaded: <span>LIVE DATA</span>";
-
-        if (!games || games.length === 0) {
-
-            gamesContainer.innerHTML = `
-                <div class="no-data">
-                    No NFL odds are currently available.
-                </div>
-            `;
-
-            return;
-        }
-
-        gamesContainer.innerHTML =
-            games.map(createGame).join("");
-
-    }
-
-    catch (error) {
-
-        console.error(error);
-
-        gamesContainer.innerHTML = `
-            <div class="no-data">
-                Unable to load live NFL odds.
-                <br><br>
-                Make sure odds.json exists in the repository.
-            </div>
-        `;
-
-        document.getElementById("updated").innerHTML =
-            "Unable to load latest odds";
-
-    }
-
-}
-
-loadOdds();
-
-</script>
-
-</body>
-</html>
+    initiateBtn.addEventListener('click', () => {
+        const selectedModel = document.getElementById('model-source').value;
+        
+        // Reset UI State
+        initiateBtn.disabled = true;
+        progressWrapper.style.display = 'block';
+        systemStatus.textContent = 'Transferring...';
+        systemStatus.style.borderColor = 'var(--accent-blue)';
+        systemStatus.style.color = 'var(--accent-blue)';
+        systemStatus.style.background = 'rgba(0, 210, 255, 0.1)';
+
+        appendLog(`Starting automated pipeline deployment for: ${selectedModel}`, 'info');
+
+        const pipelineSteps = [
+            { pct: 20, text: 'Encrypting weights and matrix assets...', log: 'Neural weights packetized into secure blobs.', style: 'info' },
+            { pct: 45, text: 'Opening secure remote runtime stream...', log: 'Destination socket validated. Routing handshake...', style: 'info' },
+            { pct: 70, text: 'Streaming live telemetry coefficients...', log: 'Data block streaming synchronized over layer-7 array.', style: 'info' },
+            { pct: 90, text: 'Executing validation validation pass...', log: 'Parsing remote node checksum calculations...', style: 'warning' },
+            { pct: 100, text: 'Deployment Sync Complete.', log: 'Core hot-swap success. Dynamic model update live!', style: 'success' }
+        ];
+
+        let index = 0;
+        function processPipeline() {
+            if (index < pipelineSteps.length) {
+                const step = pipelineSteps[index];
