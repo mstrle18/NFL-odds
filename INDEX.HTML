@@ -1,0 +1,282 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NFL Odds Edge</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #080d18;
+  color: white;
+}
+
+header {
+  background: #10182b;
+  border-bottom: 1px solid #263452;
+  padding: 22px 16px 0;
+}
+
+.header {
+  max-width: 1200px;
+  margin: auto;
+}
+
+h1 {
+  margin: 0;
+  font-size: 29px;
+}
+
+.subtitle {
+  color: #9ca8c7;
+  margin-top: 6px;
+}
+
+nav {
+  display: flex;
+  gap: 8px;
+  max-width: 1200px;
+  margin: 20px auto 0;
+  overflow-x: auto;
+  padding-bottom: 12px;
+}
+
+nav button {
+  background: #1b2743;
+  border: 0;
+  color: white;
+  padding: 11px 17px;
+  border-radius: 8px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+nav button.active {
+  background: white;
+  color: #111827;
+}
+
+main {
+  max-width: 1200px;
+  margin: 25px auto;
+  padding: 0 16px;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  margin-bottom: 22px;
+}
+
+.stat {
+  background: #10182b;
+  border: 1px solid #263452;
+  padding: 17px;
+  border-radius: 12px;
+}
+
+.stat-title {
+  color: #9ca8c7;
+  font-size: 12px;
+}
+
+.stat-value {
+  font-size: 25px;
+  font-weight: bold;
+  margin-top: 6px;
+}
+
+.game {
+  background: #10182b;
+  border: 1px solid #263452;
+  border-radius: 14px;
+  margin-bottom: 18px;
+  overflow: hidden;
+}
+
+.game-header {
+  padding: 17px;
+  border-bottom: 1px solid #263452;
+  display: flex;
+  justify-content: space-between;
+}
+
+.game-title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.game-time {
+  color: #9ca8c7;
+}
+
+.market {
+  padding: 16px;
+  border-bottom: 1px solid #263452;
+}
+
+.market:last-child {
+  border-bottom: 0;
+}
+
+.market-title {
+  color: #9ca8c7;
+  font-size: 12px;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.odds {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.odds-card {
+  background: #18233d;
+  padding: 13px;
+  border-radius: 9px;
+}
+
+.team {
+  font-weight: bold;
+}
+
+.line {
+  margin-top: 5px;
+}
+
+.prob {
+  color: #72e6a5;
+  font-size: 13px;
+  margin-top: 5px;
+}
+
+.sportsbooks {
+  color: #9ca8c7;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.props-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+
+.props-card {
+  background: #10182b;
+  border: 1px solid #263452;
+  border-radius: 14px;
+  padding: 18px;
+}
+
+.props-card h2 {
+  margin-top: 0;
+}
+
+.prop {
+  display: flex;
+  justify-content: space-between;
+  padding: 14px 0;
+  border-bottom: 1px solid #263452;
+}
+
+.prop:last-child {
+  border-bottom: 0;
+}
+
+.prop-name {
+  font-weight: bold;
+}
+
+.prop-detail {
+  color: #9ca8c7;
+  font-size: 13px;
+  margin-top: 4px;
+}
+
+.prop-right {
+  text-align: right;
+}
+
+.green {
+  color: #72e6a5;
+}
+
+.yellow {
+  color: #ffd166;
+}
+
+.book {
+  display: inline-block;
+  background: #263452;
+  padding: 4px 7px;
+  border-radius: 5px;
+  font-size: 11px;
+  margin-top: 5px;
+}
+
+.hidden {
+  display: none;
+}
+
+.info {
+  background: #10182b;
+  border: 1px solid #263452;
+  border-radius: 14px;
+  padding: 22px;
+  line-height: 1.6;
+}
+
+.info h2 {
+  margin-top: 0;
+}
+
+@media (max-width: 700px) {
+
+  h1 {
+    font-size: 24px;
+  }
+
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .odds {
+    grid-template-columns: 1fr;
+  }
+
+  .game-header {
+    display: block;
+  }
+
+  .game-time {
+    margin-top: 6px;
+  }
+
+  .props-grid {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="header">
+
+<h1>🏈 NFL Odds Edge</h1>
+
+<div
+```
